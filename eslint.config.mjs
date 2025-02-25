@@ -26,7 +26,15 @@ export default tseslint.config(
     },
   },
   {
+    // Delete `CR` eslint(prettier/prettier) 에러 해결 위한 rule 추가
+    // windows에서 발생 - prettier의 기본 라인 개행 방식(lf)이 windows의 개행 방식(crlf)과 다르기 때문
     rules: {
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "off"
+        }
+      ],
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn'
