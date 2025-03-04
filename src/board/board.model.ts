@@ -1,7 +1,7 @@
 export interface Board {
     id: string;
     title: string;
-    decription: string;
+    description: string;
     // enum에 정의된 값 외에는 에러
     status: BoardStatus;
 }
