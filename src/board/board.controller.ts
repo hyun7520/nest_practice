@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { Board } from './board.model'
 import { BoardService } from './board.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -17,6 +17,11 @@ export class BoardController {
         return this.boardService.getAllBoards();
     }
 
+    @Get('/:id')
+    getBoardById(@Param('id') id: string): Board {
+        return this.boardService.getBoardById(id);
+    }
+
     @Post()
     // Body에서 특정값만 받아오려고 할 경우
     // @Body('title') title: string,
@@ -24,4 +29,5 @@ export class BoardController {
     createBoard(@Body() createBoardDto: CreateBoardDto): Board {
         return this.boardService.createBoard(createBoardDto);
     }
+
 }
