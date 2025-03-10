@@ -18,6 +18,8 @@ export class BoardController {
     }
 
     @Get('/:id')
+    // 파라미터가 두개 이상일 경우 
+    // @Param() parms: string[] -> 배열 형태로 가져올 수 있다.
     getBoardById(@Param('id') id: string): Board {
         return this.boardService.getBoardById(id);
     }

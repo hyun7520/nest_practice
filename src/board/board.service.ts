@@ -31,13 +31,12 @@ export class BoardService {
     }
 
     getBoardById(id: string): Board {
+        // Type 'undefined' is not assignable to type 'Board' 문제 해결
+        // 값이 없는 경우에 대한 처리를 해주어야 한다.
         // 끝에 !을 붙임으로써 non-null assertion operator 역할을 한다.
-        // null일 것 같은 값이어도 확정적으로 값이 있음을 선언하는 건데 게시판이 없는 경우 예외 처리는?
-        // const foundBoard: Board = this.boards.find((board) => board.id === id)!;
-        const foundBoard: Board = this.boards.find((board) => board.id == id) || undefined;
-        if (foundBoard == undefined) {
-            return null;
-        }
+        // const foundBoard = this.boards.find((board) => board.id === id)!;
+        // 또는 아래와 같이 강제적으로 해당 값의 type을 Board로 지정
+        const foundBoard = this.boards.find((board) => board.id === id) as Board;
         return foundBoard;
     }
 }
