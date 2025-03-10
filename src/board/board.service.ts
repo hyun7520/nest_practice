@@ -40,6 +40,12 @@ export class BoardService {
         return foundBoard;
     }
 
+    updateBoard(id: string, status: BoardStatus): Board {
+        const board = this.getBoardById(id);
+        board.status = status;
+        return board;
+    }
+
     deleteBoardById(id: string): void {
         // boards 배열에서 파라미터로 받은 id와 다른 것만 남기겠다.
         this.boards = this.boards.filter((board) => board.id !== id);
