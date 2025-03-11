@@ -51,7 +51,8 @@ export class BoardService {
     }
 
     deleteBoardById(id: string): void {
+        const foundBoard = this.getBoardById(id);
         // boards 배열에서 파라미터로 받은 id와 다른 것만 남기겠다.
-        this.boards = this.boards.filter((board) => board.id !== id);
+        this.boards = this.boards.filter((board) => board.id !== foundBoard.id);
     }
 }
