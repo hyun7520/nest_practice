@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model';
 import { v1 as uuid } from 'uuid';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -37,6 +37,10 @@ export class BoardService {
         // const foundBoard = this.boards.find((board) => board.id === id)!;
         // 또는 아래와 같이 강제적으로 해당 값의 type을 Board로 지정
         const foundBoard = this.boards.find((board) => board.id === id) as Board;
+        // board가 없을 시 에러 발생
+        if (!foundBoard) {
+            throw new NotFoundException(`Board ${id} does not exist`);
+        }
         return foundBoard;
     }
 
