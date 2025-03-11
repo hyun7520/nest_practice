@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Patch } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Patch, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Board, BoardStatus } from './board.model'
 import { BoardService } from './board.service';
 import { CreateBoardDto } from './dto/create-board.dto';
@@ -25,6 +25,8 @@ export class BoardController {
     }
 
     @Post()
+    // DTO에 넣어준 validation을 확인하기 위해 핸들러 레벨에서 ValidationPipe 바인딩
+    @UsePipes(ValidationPipe)
     // Body에서 특정값만 받아오려고 할 경우
     // @Body('title') title: string,
     // @Body('description') description: string
@@ -32,7 +34,7 @@ export class BoardController {
         return this.boardService.createBoard(createBoardDto);
     }
 
-    @Patch(':/id/status')
+    @Patch('/:id/status')
     updateBoardStatus(@Param('id') id: string, @Param('status') status: BoardStatus) {
         return this.boardService.updateBoard(id, status);
     }
