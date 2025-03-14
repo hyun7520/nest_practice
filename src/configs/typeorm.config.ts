@@ -5,7 +5,7 @@ export const typeORMConfig: TypeOrmModuleOptions = {
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: '7520',
+    password: '1234',
     database: 'Board',
     entities: [__dirname + '/../**/*.entity.{js,ts}'],
     synchronize: true
