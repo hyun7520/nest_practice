@@ -99,4 +99,11 @@ export class BoardService {
 
         console.log('result ', result);
     }
+
+    async updateBoardStatus(id: number, status: BoardStatus): Promise<BoardEntity> {
+        const board = await this.getBoardById(id);
+        board.status = status;
+        await this.boardRepository.save(board);
+        return board;
+    }
 }
