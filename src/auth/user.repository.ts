@@ -10,10 +10,11 @@ export class UserRepository extends Repository<UserEntity> {
         super(UserEntity, dataSource.createEntityManager());
     }
 
-    async createUser(authCredentialDto: AuthCredentialDto): Promise<void> {
+    async createUser(authCredentialDto: AuthCredentialDto): Promise<UserEntity> {
 
         const { username, password } = authCredentialDto;
         const user = this.create({ username, password });
         await this.save(user);
+        return user;
     }
 }

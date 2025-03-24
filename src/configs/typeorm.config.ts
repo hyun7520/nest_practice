@@ -1,4 +1,6 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { UserEntity } from "src/auth/user.entity";
+import { UserRepository } from "src/auth/user.repository";
 import { BoardEntity } from "src/board/board.entitiy";
 import { BoardRepository } from "src/board/board.repository";
 
@@ -7,9 +9,9 @@ export const typeORMConfig: TypeOrmModuleOptions = {
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: 'password',
+    password: '7520',
     database: 'Board',
-    entities: [__dirname + '/../**/*.{entity}.{js,ts}', BoardEntity, BoardRepository],
+    entities: [__dirname + '/../**/*.{entity}.{js,ts}', BoardEntity, BoardRepository, UserEntity, UserRepository],
     synchronize: true,
     autoLoadEntities: true,
     // 서버 재실행 시 스키마의 테이블 날림
