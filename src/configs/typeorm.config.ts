@@ -11,5 +11,7 @@ export const typeORMConfig: TypeOrmModuleOptions = {
     database: 'Board',
     entities: [__dirname + '/../**/*.{entity}.{js,ts}', BoardEntity, BoardRepository],
     synchronize: true,
-    autoLoadEntities: true
+    autoLoadEntities: true,
+    // 서버 재실행 시 스키마의 테이블 날림
+    dropSchema: true
 }

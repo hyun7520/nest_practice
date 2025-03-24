@@ -81,6 +81,10 @@ export class BoardService {
         return found;
     }
 
+    async getAllBoards(): Promise<BoardEntity[]> {
+        return this.boardRepository.find();
+    }
+
     async createBoard(createBoardDto: CreateBoardDto): Promise<BoardEntity> {
         const { title, description } = createBoardDto;
         const board = this.boardRepository.create({

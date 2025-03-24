@@ -31,6 +31,11 @@ export class BoardController {
         return this.boardService.getBoardById(id);
     }
 
+    @Get()
+    getAllBoard(): Promise<BoardEntity[]> {
+        return this.boardService.getAllBoards();
+    }
+
     // @Post()
     // // DTO에 넣어준 validation을 확인하기 위해 핸들러 레벨에서 ValidationPipe 바인딩
     // @UsePipes(ValidationPipe)
